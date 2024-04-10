@@ -36,10 +36,4 @@ class Aeronave {
       $this->status = $status;
     }
   }
-
-	
-
-	
-
-
 }

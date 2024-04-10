@@ -1,40 +1,44 @@
 <?php
 
-//Classe Passageiro herda de Pessoa
-class Passageiro extends Pessoa{
-  private string $identificador;
-  private Passagem $passagem; //Instancia da classe Passagem
-  private Bagagem $bagagem; //Instancia da classe Bagagem
+require_once 'Pessoa.php';
+require_once 'Bagagem.php';
+require_once 'Passagem.php';
 
-  public function __construct(string $identificador, Passagem $passagem, Bagagem $bagagem) {
-    $this->identificador = $identificador;
-    $this-> passagem = $passagem;
-    $this-> bagagem = $bagagem;
-  }
+class Passageiro extends Pessoa {
+    private string $identificador;
+    private ?Passagem $passagem; // Propriedade para armazenar a passagem (agora pode ser nula)
+    private ?Bagagem $bagagem; // Propriedade para armazenar a bagagem (agora pode ser nula)
 
-  //Metodos de acesso - Getters e Setters
-  public function getIdentificador(): string {
-    return $this-> identificador;
-  }
+    // Construtor agora aceita valores nulos para Passagem e Bagagem
+    public function __construct(string $identificador, ?Passagem $passagem, ?Bagagem $bagagem) {
+        $this->identificador = $identificador;
+        $this->passagem = $passagem;
+        $this->bagagem = $bagagem;
+    }
 
-  public function getPassagem() : Passagem {
-    return $this-> passagem;
-  }
+    // Retorna o identificador do passageiro
+    public function getIdentificador(): string {
+        return $this->identificador;
+    }
 
-  public function getBagagem() : Bagagem {
-    return $this-> bagagem;
-  }
+    // Retorna a passagem do passageiro (pode ser nula)
+    public function getPassagem(): ?Passagem {
+        return $this->passagem;
+    }
 
-  public function setIdentificador(string $identificador) : void {
-    $this-> identificador = $identificador;
-  }
+    // Retorna a bagagem do passageiro (pode ser nula)
+    public function getBagagem(): ?Bagagem {
+        return $this->bagagem;
+    }
 
-  public function setPassagem(Passagem $passagem) : void {
-    $this-> passagem = $passagem;
-  }
+    // Atualiza a passagem do passageiro
+    public function setPassagem(?Passagem $passagem): void {
+        $this->passagem = $passagem;
+    }
 
-  public function setBagagem(Bagagem $bagagem) : void {
-    $this->bagagem = $bagagem;
-  }
-
+    // Atualiza a bagagem do passageiro
+    public function setBagagem(?Bagagem $bagagem): void {
+        $this->bagagem = $bagagem;
+    }
 }
+?>

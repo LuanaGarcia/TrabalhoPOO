@@ -1,4 +1,7 @@
 <?php
+require_once 'Tripulacao.php';
+require_once 'Aeronave.php';
+require_once 'Cidade.php';
 //Classe Piloto herda de Tripulacao
 class Piloto extends Tripulacao{
   private int $horasVoo;
@@ -39,4 +42,7 @@ class Piloto extends Tripulacao{
     
   }
 
+    public function trabalhar(): string {
+        return 'O piloto está preparando o voo.';
+    }
 }

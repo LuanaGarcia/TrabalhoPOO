@@ -1,35 +1,35 @@
 <?php
-//Classe triplacao herda de pessoa
-class Tripulacao extends Pessoa{
-  protected float $salario;
-  protected string $alcunha;
+require_once 'Pessoa.php';
+// Classe Tripulacao herda de Pessoa
+class Tripulacao extends Pessoa {
+    protected float $salario;
+    protected string $alcunha;
 
-  public function __construct(string $nome, string $email, float $salario, string $alcunha) {
-    $this->salario = $salario;
-    $this-> alcunha = $alcunha;
-    //referenciando nome e e-mail da classe pessoa
-    parent :: setNome($nome);
-    parent :: setEmail($email);
-  }
+    public function __construct(string $nome, string $email, float $salario, string $alcunha) {
+        $this->salario = $salario;
+        $this->alcunha = $alcunha;
+        // Chamando o construtor da classe pai Pessoa
+        parent::__construct($nome, $email);
+    }
 
-  //Metodos de acesso - Getters e Setters
-  public function getSalario() : float {
-    return $this-> salario;
-  }
+    // Métodos de acesso - Getters e Setters
+    public function getSalario(): float {
+        return $this->salario;
+    }
 
-  public function getAlcunha() : string {
-    return $this-> alcunha;
-  }
+    public function getAlcunha(): string {
+        return $this->alcunha;
+    }
 
-  public function setSalario(float $salario) : void {
-    $this-> salario = $salario;
-  }
+    public function setSalario(float $salario): void {
+        $this->salario = $salario;
+    }
 
-  public function setAlcunha(string $alcunha) : void {
-    $this-> alcunha = $alcunha;
-  }
+    public function setAlcunha(string $alcunha): void {
+        $this->alcunha = $alcunha;
+    }
 
-  public function trabalhar () : string {
-    return 'O tripulante trabalha no vôo';
-  }
+    public function trabalhar(): string {
+        return 'O tripulante está trabalhando.';
+    }
 }
