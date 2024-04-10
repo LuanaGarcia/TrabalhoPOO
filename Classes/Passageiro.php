@@ -8,8 +8,8 @@ class Passageiro extends Pessoa{
 
   public function __construct(string $identificador, Passagem $passagem, Bagagem $bagagem) {
     $this->identificador = $identificador;
-    $this-> Passagem = $passagem;
-    $this-> Bagagem = $bagagem;
+    $this-> passagem = $passagem;
+    $this-> bagagem = $bagagem;
   }
 
   //Metodos de acesso - Getters e Setters
