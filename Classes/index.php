@@ -23,6 +23,17 @@ $aeroportoDestino = new Aeroporto("Aeroporto Internacional do Galeão", new Cida
 $dataHoraPartida = new DateTime('2024-04-15 10:00:00');
 $voo = new Voo("VOO123", $aeroportoOrigem, $aeroportoDestino, $aeronave, $dataHoraPartida);
 
+// Criando um objeto Piloto
+$cidade = new Cidade("Base do Piloto", "Estado do Piloto", Porte::JATO_GRANDE_PORTE);
+$piloto = new Piloto('John Clemente', 'john.clemente@example.com', 1000, 'Capitão John', 1000, $aeronave, $cidade);
+
+// Criando um objeto Comissario
+$comissario = new Comissario('Rachel Smith', 'Rachel.smith@example.com', 3000, 'Sra. Smith', ['Inglês', 'Espanhol'], true, 5);
+
+// Adicionando o piloto e o comissário à tripulação do voo
+$voo->adicionarTripulante($piloto);
+$voo->adicionarTripulante($comissario);
+
 // Criando um objeto Passageiro com uma passagem válida
 $passagem = new Passagem("PASS123", 299.99, $voo, new Passageiro("PAS123", null, null, new Pessoa("Nome do Passageiro", "passageiro@example.com")), new DateTime('2024-04-15 07:00:00'));
 
@@ -48,3 +59,44 @@ foreach ($voo->getPassageiros() as $passageiro) {
     echo "- " . $passageiro->getIdentificador() . "\n";
 }
 
+echo "\nInformações do Piloto:\n";
+echo "Nome: " . $piloto->getNome() . "\n";
+echo "Email: " . $piloto->getEmail() . "\n";
+echo "Horas de Voo: " . $piloto->getHorasVoo() . "\n";
+echo "Tipo de Aeronave: " . $piloto->getTipoAeronave()->getModelo() . "\n";
+echo "Base de Operação: " . $piloto->getBaseOperacao()->getNome() . "\n";
+
+echo "\nInformações do Comissário:\n";
+echo "Nome: " . $comissario->getNome() . "\n";
+echo "Email: " . $comissario->getEmail() . "\n";
+echo "Idiomas: " . implode(", ", $comissario->getIdiomas()) . "\n";
+echo "Treinamento de Emergência: " . ($comissario->getTreinamentoEmergencia() ? "Sim" : "Não") . "\n";
+echo "Anos de Experiência: " . $comissario->getAnosExperiencia() . "\n";
+
+?>
+
+<html>
+
+<head>
+    <title>Integrated Airlines - Luana Garcia</title>
+</head>
+
+<body>
+    <h2>Aeronave</h2>
+    <p><strong>Modelo: </strong> <?= $aeronave->getModelo() ?></p>
+    <p><strong>Capacidade: </strong><?= $aeronave->getCapacidade() ?></p>
+    <strong>Status: </strong> <?= $aeronave->getStatus() ?>
+
+    <h2>Tripulação</h2>
+    <h3>Piloto: </h3>
+    <p><strong>Nome: </strong> <?= $piloto->getNome() ?></p>
+    <p><strong>Horas de Vôo: </strong> <?= $piloto->getHorasVoo() ?></p>
+
+    <h3>Comissario: </h3>
+    <p><strong>Comissario: </strong><?= $comissario->getNome() ?></p>
+    <p><strong>Anos de Experiencia: </strong> <?= $comissario->getAnosExperiencia() ?></p>
+
+
+</body>
+
+</html>

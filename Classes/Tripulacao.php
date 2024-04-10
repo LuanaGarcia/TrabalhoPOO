@@ -1,6 +1,6 @@
 <?php
 require_once 'Pessoa.php';
-// Classe Tripulacao herda de Pessoa
+
 class Tripulacao extends Pessoa {
     protected float $salario;
     protected string $alcunha;
@@ -8,11 +8,9 @@ class Tripulacao extends Pessoa {
     public function __construct(string $nome, string $email, float $salario, string $alcunha) {
         $this->salario = $salario;
         $this->alcunha = $alcunha;
-        // Chamando o construtor da classe pai Pessoa
         parent::__construct($nome, $email);
     }
 
-    // Métodos de acesso - Getters e Setters
     public function getSalario(): float {
         return $this->salario;
     }
@@ -33,3 +31,4 @@ class Tripulacao extends Pessoa {
         return 'O tripulante está trabalhando.';
     }
 }
+?>

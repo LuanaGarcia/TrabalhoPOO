@@ -1,27 +1,25 @@
 <?php
 require_once 'Tripulacao.php';
 require_once 'Pessoa.php';
+
 class Comissario extends Tripulacao {
-    private array $idiomas = [];
+    private array $idiomas;
     private bool $treinamentoEmergencia;
     private int $anosExperiencia;
 
     public function __construct(
+        string $nome,
+        string $email,
+        float $salario,
+        string $alcunha,
         array $idiomas,
         bool $treinamentoEmergencia,
-        int $anosExperiencia,
-        Tripulacao $salario,
-        Tripulacao $alcunha,
-        Pessoa $nome,
-        Pessoa $email
+        int $anosExperiencia
     ) {
+        parent::__construct($nome, $email, $salario, $alcunha);
         $this->idiomas = $idiomas;
         $this->treinamentoEmergencia = $treinamentoEmergencia;
         $this->anosExperiencia = $anosExperiencia;
-        $this->salario = $salario;
-        $this->alcunha = $alcunha;
-        $this->nome = $nome;
-        $this->email = $email;
     }
 
     public function getIdiomas(): array {
@@ -40,16 +38,21 @@ class Comissario extends Tripulacao {
         $this->treinamentoEmergencia = $treinamentoEmergencia;
     }
 
-    public function getAnosDeExperiencia(): int {
+    public function getAnosExperiencia(): int {
         return $this->anosExperiencia;
     }
 
-    public function setAnosDeExperiencia(int $anosExperiencia): void {
+    public function setAnosExperiencia(int $anosExperiencia): void {
         $this->anosExperiencia = $anosExperiencia;
     }
 
+    public function verificarEquipamentoDeSeguranca(): bool {
+        // Lógica para verificar o equipamento de segurança
+        return true;
+    }
 
     public function trabalhar(): string {
         return 'O comissário está atendendo os passageiros.';
     }
 }
+?>
